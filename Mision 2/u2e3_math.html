@@ -1,0 +1,62 @@
+<!-- u2e3_math.html
+Realiza un programa que permita elegir al usuario un tipo de lotería del estado y genere los números aleatorios en la
+propia página.
+Se mostrarán los siguientes tipos de loterías:
+
+Lotería nacional (los ceros a la izquierda deben mostrarse).
+Quiniela.
+Primitiva (con complementario y reintegro). -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="response"></div>
+  <script>
+    let selectorOpcion = prompt("Seleccione el tipo de loteria (nacional, quiniela, primitiva)");
+    let selectorOutput = document.querySelector(".response");
+    let numOutput = "";
+    switch (selectorOpcion) {
+      case "nacional":
+        for (let i = 0; i < 5; i++) {
+          numOutput += "" + parseInt(Math.random() * 10);
+        }
+        selectorOutput.innerHTML = `<h2>Loteria Nacional<h2>
+                                      <p>Su número es el ${numOutput}`;
+        break;
+
+      case "quiniela":
+        let random = "";
+        for (let i = 0; i < 3; i++) {
+          random = parseInt(Math.random() * 3);
+          numOutput += random == 0 ? "X" : "" + random;
+        }
+        selectorOutput.innerHTML = `<h2>Quiniela de Fútbol<h2>
+                                      <p>Sevilla-Barcelona ${numOutput.charAt(0)}</br>
+                                         Madrid-Málaga     &nbsp;&nbsp;${numOutput.charAt(1)}</br>
+                                         Cádiz-Atlético    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${numOutput.charAt(2)}<p>`;
+        break;
+
+      case "primitiva":
+        numOutput = [];
+        for (let i = 0; i < 8; i++) numOutput.push("" + parseInt((Math.random() * 49) + 1));
+        numOutput = numOutput.map(el => {
+          return el < 10 ? "0" + el : el;
+        })
+        console.log(numOutput);
+        selectorOutput.innerHTML = `<h2>Loteria Primitiva<h2>
+                                      <p>Su número es: ${numOutput.join("").substring(0, numOutput.length * 2 - 4)}</br>
+                                         Complemento: ${numOutput[numOutput.length - 2]}</br>
+                                         Reintegro: ${numOutput[numOutput.length - 1]}</p>`;
+        break;
+    }
+  </script>
+</body>
+
+</html>
