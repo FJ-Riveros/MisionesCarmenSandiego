@@ -1,0 +1,27 @@
+<!-- Crea un conversor de bases que solicite al usuario en qué base está el número que va a introducir
+(binario, decimal, octal, hexadecimal) y muestre el número en las 4 bases.
+Trata de hacerlo de la manera más optimizada posible. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //No es necesario saber de antemano en que base se introduce el número
+    let num = prompt("Introduzca el número a convertir");
+    num = parseInt(num);
+    console.log(`Conversión de ${num}`);
+    console.log(`Número en binario: ${num.toString(2)}`);
+    console.log(`Número en octal: ${num.toString(8)}`);
+    console.log(`Número en decimal: ${num.toString(10)}`);
+    console.log(`Número en hexadecimal: ${num.toString(16)}`);
+  </script>
+</body>
+
+</html>
