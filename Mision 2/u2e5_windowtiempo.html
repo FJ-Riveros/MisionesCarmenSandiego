@@ -1,0 +1,72 @@
+<!-- u2e5_windowtiempo.html
+Descubres que hay muchas aplicaciones que desconocías de Javascript.
+Una de ellas es la programación de Wearables como los SmartWatch de Samsung (Gear http://developer.samsung.com/gear ).
+Como Sandkillers que somos, no podemos ser mainstream y llevar el mismo Smartwatch que todo el mundo, así que vamos a
+programarnos
+un prototipo para en un futuro hacernos nuestro propio Smartwatch de cero.
+Nuestro Smartwatch tendrá cronómetro. Asimismo también mostrará la hora, con minutos y segundos.
+El cronómetro, a su vez, tendrá lo siguiente:
+- Un botón para poner a 0 el contador.
+- Un botón para arrancar el cronómetro.
+- Un botón para parar el cronómetro.
+- Un botón para escribir el valor del cronómetro parado en la página (podrán escribirse tantos valores como se desee) -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="horaCompleta"></div>
+  <div class="crono"><button class="resetear">Resetear</button>
+    <button class="empezar">Empezar</button>
+    <button class="parar">Parar</button>
+    <button class="guardarMarca">Guardar Marca</button>
+  </div>
+  <script>
+    //Hora
+    let selectorHora = document.querySelector(".horaCompleta"),
+      date,
+      horas,
+      minutos,
+      segundos;
+    //Cronómetro Selectores
+    let selectorReseteo = document.querySelector(".resetear"),
+      selectorEmpezar = document.querySelector(".empezar"),
+      selectorParar = document.querySelector(".parar"),
+      selectorGuardarMarca = document.querySelector(".guardarMarca");
+    //Cronómetro control
+    let cronoHoras,
+      cronoMinutos,
+      cronoSegundos;
+    selectorReseteo.onclick = () => {
+
+    }
+
+    selectorEmpezar.onclick = () => {
+
+    }
+
+    selectorParar.onclick = () => {
+
+    }
+
+    selectorGuardarMarca.onclick = () => {
+
+    }
+
+    let horaCompleta = setInterval(() => {
+      date = new Date();
+      horas = date.getHours();
+      minutos = date.getMinutes();
+      segundos = date.getSeconds();
+      selectorHora.innerHTML = `<h2>${horas}:${minutos}:${segundos < 10 ? "0" + segundos : segundos}</h2>`
+    }, 1000);
+  </script>
+</body>
+
+</html>
