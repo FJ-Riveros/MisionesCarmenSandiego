@@ -1,0 +1,27 @@
+<!-- u2e4_date.html
+Realiza un programa que sea capaz de calcular cuántas veces cae en sábado el solsticio de verano
+desde el año 2000 hasta el año 2100. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    let counter = 0;
+    for (let i = 2000; i <= 2100; i++) {
+      if (new Date(i, 5, 21).getDay() == 6) counter++;
+    }
+    console.log("El solsticio de verano cae en sábado " + counter + " veces");
+
+  </script>
+</body>
+<!--Solsticio verano: 21-Junio / 23-Septiembre -->
+
+</html>
