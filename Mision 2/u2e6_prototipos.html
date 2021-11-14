@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    class Persona {
+      #nombre;
+      #edad;
+      #especialidad;
+      #compañero;
+
+      constructor(nombre, edad, especialidad, compañero) {
+        this.#nombre = nombre,
+          this.#edad = edad,
+          this.#especialidad = especialidad,
+          this.#compañero = compañero;
+      }
+
+      get getNombre() {
+        return this.#nombre;
+      }
+      get getEdad() {
+        return this.#edad;
+      }
+      get getEspecialidad() {
+        return this.#nombre;
+      }
+    }
+  </script>
+</body>
+
+</html>
