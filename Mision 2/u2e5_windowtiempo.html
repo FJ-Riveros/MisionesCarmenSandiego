@@ -18,14 +18,31 @@ El cronómetro, a su vez, tendrá lo siguiente:
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    .container {
+      margin: 50px auto;
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="horaCompleta"></div>
-  <div class="crono"><button class="resetear">Resetear</button>
-    <button class="empezar">Empezar</button>
-    <button class="parar">Parar</button>
-    <button class="guardarMarca">Guardar Marca</button>
+  <div class="container">
+    <h1>Hora</h1>
+    <div class="horaCompleta">
+      <h2>00:00:00</h2>
+    </div>
+    <div class="crono">
+      <h1>Cronómetro</h1>
+      <div class="display">
+        <h2>00:00:00</h2>
+      </div>
+      <button class="resetear">Resetear</button>
+      <button class="empezar">Empezar</button>
+      <button class="parar">Parar</button>
+      <button class="guardarMarca">Guardar Marca</button>
+      <div class="marcas"></div>
+    </div>
   </div>
   <script>
     //Hora
@@ -38,25 +55,61 @@ El cronómetro, a su vez, tendrá lo siguiente:
     let selectorReseteo = document.querySelector(".resetear"),
       selectorEmpezar = document.querySelector(".empezar"),
       selectorParar = document.querySelector(".parar"),
-      selectorGuardarMarca = document.querySelector(".guardarMarca");
+      selectorGuardarMarca = document.querySelector(".guardarMarca"),
+      selectorMarcas = document.querySelector(".marcas"),
+      contadorMarcas = 0,
+      empiezaCrono;
+
     //Cronómetro control
-    let cronoHoras,
-      cronoMinutos,
-      cronoSegundos;
+    let cronoHoras = 0,
+      cronoMinutos = 0,
+      cronoSegundos = 0;
+
     selectorReseteo.onclick = () => {
+      clearInterval(empiezaCrono);
+      cronoHoras = 0;
+      cronoMinutos = 0;
+      cronoSegundos = 0;
+      muestraTiempoEnCrono(cronoHoras, cronoMinutos, cronoSegundos);
 
     }
 
     selectorEmpezar.onclick = () => {
+      clearInterval(empiezaCrono);
+      empiezaCrono = setInterval(() => {
+        cronoSegundos++;
+        //Minutos
+        if (cronoSegundos == 60) {
+          cronoSegundos = 0;
+          cronoMinutos++;
+        }
 
+        //Horas
+        if (cronoMinutos == 60) {
+          cronoMinutos = 0;
+          cronoHoras++;
+        }
+
+        muestraTiempoEnCrono(cronoHoras, cronoMinutos, cronoSegundos);
+      }, 1000)
     }
 
     selectorParar.onclick = () => {
-
+      clearInterval(empiezaCrono);
     }
 
     selectorGuardarMarca.onclick = () => {
+      if (cronoHoras != 0 || cronoMinutos != 0 || cronoSegundos != 0) {
+        contadorMarcas++;
+        selectorMarcas.innerHTML += `<h2>${contadorMarcas}. ${cronoHoras < 10 ? "0" + cronoHoras : cronoHoras}:${cronoMinutos < 10 ? "0" + cronoMinutos : cronoMinutos}:${cronoSegundos < 10 ? "0" + cronoSegundos : cronoSegundos} `
+      }
+    }
 
+
+    let muestraTiempoEnCrono = (hor, min, seg) => {
+      let displayCrono = document.querySelector(".display").innerHTML = `
+        <h2>${hor < 10 ? "0" + hor : hor}:${min < 10 ? "0" + min : min}:${seg < 10 ? "0" + seg : seg}</h2>
+      `
     }
 
     let horaCompleta = setInterval(() => {
@@ -64,7 +117,7 @@ El cronómetro, a su vez, tendrá lo siguiente:
       horas = date.getHours();
       minutos = date.getMinutes();
       segundos = date.getSeconds();
-      selectorHora.innerHTML = `<h2>${horas}:${minutos}:${segundos < 10 ? "0" + segundos : segundos}</h2>`
+      selectorHora.innerHTML = `<h2>${horas < 10 ? "0" + horas : horas}:${minutos < 10 ? "0" + minutos : minutos}:${segundos < 10 ? "0" + segundos : segundos}</h2>`
     }, 1000);
   </script>
 </body>
