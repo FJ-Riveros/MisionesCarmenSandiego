@@ -47,7 +47,7 @@
         return response;
       }
       get getNombreCompañero(){
-        return this.#compañero.getNombre();
+        return this.#compañero.getNombre;
       }
 
       get getCompañero(){
@@ -91,17 +91,19 @@
 
 
 
-      mostrar() {
+      get mostrar() {
         return `
-          Nombre: ${getNombre()}<br/>
-          Edad: ${getEdad()}<br/>
-          Especialidad: ${getEspecialidad()}<br/>
-          Nombre del compañero: ${getNombreCompañero()};
+          Nombre: ${this.getNombre}<br/>
+          Edad: ${this.getEdad}<br/>
+          Especialidad: ${this.getEspecialidad}<br/>
+          Nombre del compañero: ${this.getNombreCompañero};
         `
       }
     }
 
-    let persona1 = new Persona()
+    let persona1 = new Persona("Fran Riveros", 26, 1, "");
+    let persona2 = new Persona("Raquel Ruiz", 25, 2, persona1);
+    console.log(persona2.mostrar)
   </script>
 </body>
 
