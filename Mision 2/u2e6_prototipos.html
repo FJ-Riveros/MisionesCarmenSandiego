@@ -32,9 +32,76 @@
         return this.#edad;
       }
       get getEspecialidad() {
-        return this.#nombre;
+        let response = "";
+        switch (this.#especialidad) {
+          case 1:
+            response = "Sistemas";
+            break;
+          case 2:
+            response = "Web";
+            break;
+            response = "Multiplataforma";
+          case 3:
+            break;
+        }
+        return response;
+      }
+      get getNombreCompañero(){
+        return this.#compañero.getNombre();
+      }
+
+      get getCompañero(){
+        return this.#compañero;
+      }
+
+      set setNombre(nuevoNombre){
+        this.#nombre = nuevoNombre;
+      }
+
+      set setEdad(nuevaEdad){
+        this.#edad = nuevaEdad;
+      }
+
+      set setEspecialidad(nuevaEspecialidad){
+        this.#especialidad = nuevaEspecialidad;
+      }
+
+      set setEspecialidadNombre(nombreNuevaEspecialidad){
+        let num = 0;
+        switch (nombreNuevaEspecialidad){
+          
+          case "Sistemas":
+            num = 1;  
+          break;
+
+          case "Web":
+            num = 2;  
+          break;
+
+          case "Multiplataforma":
+            num = 3;  
+          break;
+        }
+        this.setEspecialidad(num);
+      }
+
+      set setCompañero(nuevoCompañero){
+        this.#compañero = nuevoCompañero;
+      }
+
+
+
+      mostrar() {
+        return `
+          Nombre: ${getNombre()}<br/>
+          Edad: ${getEdad()}<br/>
+          Especialidad: ${getEspecialidad()}<br/>
+          Nombre del compañero: ${getNombreCompañero()};
+        `
       }
     }
+
+    let persona1 = new Persona()
   </script>
 </body>
 
